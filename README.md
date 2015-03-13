@@ -3,18 +3,18 @@
 Write a set of lisp functions that performs symbolic simplification and evaluation of boolean expressions using "and", "or", and "not". You can use any applicable version of lisp or scheme. You can use either nil or 0 for false and either 't or 1 for true. The following illustrates with nil/1.
 Expressions are created as unevaluated lists. For example:
 
- `(setq p1 '(and x (or x (and y (not z)))))`
- 
- `(setq p2 '(and (and z nil) (or x 1)))`
- 
- `(setq p3 '(or 1 a))`
+```lisp
+ (setq p1 '(and x (or x (and y (not z)))))`
+ (setq p2 '(and (and z nil) (or x 1)))
+ (setq p3 '(or 1 a))
+ ```
 set p1, p2, and p3 to the given unevaluated expressions. Start off with four functions that build (unevaluated) expressions:
 
- `(defun andexp (e1 e2) (list 'and e1 e2))`
- 
- `(defun orexp  (e1 e2) (list 'or e1 e2))`
- 
- `(defun notexp (e1) (list 'not e1))`
+ ```lisp
+ (defun andexp (e1 e2) (list 'and e1 e2))
+ (defun orexp  (e1 e2) (list 'or e1 e2))
+ (defun notexp (e1) (list 'not e1))
+ ```
  
 For example, p3 could have been created using `(setq p3 (orexp 1 'a))`
 
