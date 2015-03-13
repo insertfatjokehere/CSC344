@@ -16,7 +16,7 @@ set p1, p2, and p3 to the given unevaluated expressions. Start off with four fun
  (defun notexp (e1) (list 'not e1))
  ```
  
-For example, p3 could have been created using `(setq p3 (orexp 1 'a))`
+For example, p3 could have been created using ```lisp (setq p3 (orexp 1 'a)) ```
 
 The main function to write, "evalexp", entails functions that simplify, bind, and evaluate these expressions.
 
