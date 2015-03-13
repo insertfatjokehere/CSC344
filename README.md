@@ -16,7 +16,11 @@ set p1, p2, and p3 to the given unevaluated expressions. Start off with four fun
  (defun notexp (e1) (list 'not e1))
  ```
  
-For example, p3 could have been created using ```lisp (setq p3 (orexp 1 'a)) ```
+For example, p3 could have been created using 
+
+```lisp 
+(setq p3 (orexp 1 'a)) 
+```
 
 The main function to write, "evalexp", entails functions that simplify, bind, and evaluate these expressions.
 
@@ -39,5 +43,16 @@ Binding consists of replacing some or all of the variables in expressions with c
 
 The evalexp function should take a symbolic expression and a binding list and return the simplest form (that might just be a constant). One way to define this is
 
-  `(defun evalexp (bindings exp) (simplify (bind-values bindings exp)))`
-Example: `(evalexp p1 '( (x nil) (z 1) ))` binds x and z (but not y) in p1, leading to `(and nil (or nil (and y (not 1))))` and then further simplifies to just nil
+```lisp 
+(defun evalexp (bindings exp) (simplify (bind-values bindings exp)))
+```
+
+Example: 
+```lisp
+(evalexp p1 '( (x nil) (z 1) )) 
+```
+binds x and z (but not y) in p1, leading to 
+```lisp
+(and nil (or nil (and y (not 1))))
+```
+and then further simplifies to just nil
