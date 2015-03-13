@@ -60,143 +60,143 @@
 
 (defun evalexp (expression bindings)
 
-	(cond
-		; If there is no bindings, return expression
-		((null bindings)
-			expression
-		) 
-		; else process the expression
-		(T 
-			(simplify (substitute-values expression bindings))
-		)
-	)
+  (cond
+    ; If there is no bindings, return expression
+    ((null bindings)
+      expression
+    ) 
+    ; else process the expression
+    (T 
+      (simplify (substitute-values expression bindings))
+    )
+  )
 )
 
 (defun simplify (expression)
-	(cond
-		; If the expression is null, return nil
-		((null expression) 
-			nil
-		)
+  (cond
+    ; If the expression is null, return nil
+    ((null expression) 
+      nil
+    )
 
-		; else if the expression is a list, simplify it
+    ; else if the expression is a list, simplify it
 
-		((listp expression)
-			(return-value (car expression) (simplify (car (cdr expression))) (simplify (car (cdr (cdr expression)))))
-		)
+    ((listp expression)
+      (return-value (car expression) (simplify (car (cdr expression))) (simplify (car (cdr (cdr expression)))))
+    )
 
-		; else return the expression
-		(T 
-			expression
-		)
-		
-	)
+    ; else return the expression
+    (T 
+      expression
+    )
+    
+  )
 )
 
 ;; This is the function to actually switch the values
 
 (defun change-value (old new left)
 
-	(cond
+  (cond
 
-		((null left)	
-			nil
-		)
+    ((null left)  
+      nil
+    )
 
-		((listp (car left)) 
-			(cons (change-value old new (car left)) (change-value old new (cdr left)))
-		)
-		
-		((eq old (car left)) 
-			(cons new (change-value old new (cdr left)))
-		)		
-	
-		(T 
-			(cons (car left) (change-value old new (cdr left)))
-		)
-	)
+    ((listp (car left)) 
+      (cons (change-value old new (car left)) (change-value old new (cdr left)))
+    )
+    
+    ((eq old (car left)) 
+      (cons new (change-value old new (cdr left)))
+    )   
+  
+    (T 
+      (cons (car left) (change-value old new (cdr left)))
+    )
+  )
 )
 
 ;; The function is called to substitute the expression with the values
 
 (defun substitute-values (expression bindings)
 
-	(cond
-		((null bindings) 
-			expression
-		)
+  (cond
+    ((null bindings) 
+      expression
+    )
 
-		((listp (car bindings)) 
-			(substitute-values expression (car bindings)) (substitute-values (change-value (car(car bindings)) (car(cdr(car bindings))) expression) (cdr bindings))
-		)
+    ((listp (car bindings)) 
+      (substitute-values expression (car bindings)) (substitute-values (change-value (car(car bindings)) (car(cdr(car bindings))) expression) (cdr bindings))
+    )
 
-		(T 
-			(change-value (car bindings) (car(cdr bindings)) expression)
-		)
-	)
+    (T 
+      (change-value (car bindings) (car(cdr bindings)) expression)
+    )
+  )
 )
 
 
 ;; returns the value of an expression
 
 (defun return-value (operator left right)
-	(cond
-		; And Cases
-		; (and x nil) => nil; 
-		; (and nil x) => nil;
-		; (and x 1) => x; 
-		; (and 1 x) => x;
-		; (and x x) => x this wasn't mentioned in the assignemnt
-		((equal operator 'and) 
-			(cond
-				((null right) nil)
-				((null left) nil)
-				((equal right '1) left)
-				((equal left '1) right)
-				((equal left right) left)
-				; if expression cant be evaluated, return the expression
-				(T 
-					(list 'and left right)
-				)
-			)
-		)
+  (cond
+    ; And Cases
+    ; (and x nil) => nil; 
+    ; (and nil x) => nil;
+    ; (and x 1) => x; 
+    ; (and 1 x) => x;
+    ; (and x x) => x this wasn't mentioned in the assignemnt
+    ((equal operator 'and) 
+      (cond
+        ((null right) nil)
+        ((null left) nil)
+        ((equal right '1) left)
+        ((equal left '1) right)
+        ((equal left right) left)
+        ; if expression cant be evaluated, return the expression
+        (T 
+          (list 'and left right)
+        )
+      )
+    )
 
-		; Or Cases
-		; (or x nil) => x; 
-		; (or nil x) => x;
-		; (or 1 x) => 1;
-		; (or x 1) => 1;
-		; (or x x) => x this wasn't mentioned in the assignment
-		((equal operator 'or) 
-			(cond
-				((null right) left)
-				((null left) right)
-				((equal left '1) '1)
-				((equal right '1) '1)
-				((equal left right) left)
-				; if expression cant be evaluated, return the expression
-				(T 
-					(list 'or left right)
-				)
-			)
-		)
+    ; Or Cases
+    ; (or x nil) => x; 
+    ; (or nil x) => x;
+    ; (or 1 x) => 1;
+    ; (or x 1) => 1;
+    ; (or x x) => x this wasn't mentioned in the assignment
+    ((equal operator 'or) 
+      (cond
+        ((null right) left)
+        ((null left) right)
+        ((equal left '1) '1)
+        ((equal right '1) '1)
+        ((equal left right) left)
+        ; if expression cant be evaluated, return the expression
+        (T 
+          (list 'or left right)
+        )
+      )
+    )
 
-		; Not Cases
-		; (not nil) => 1;
-		; (not 1) => nil
-		((equal operator 'not) 
-			(cond
-				((null left) '1)
-				((equal left '1) nil)
-				; if expression cant be evaluated, return the expression
-				(T 
-					(list 'not left)
-				)
-			)
-		)
+    ; Not Cases
+    ; (not nil) => 1;
+    ; (not 1) => nil
+    ((equal operator 'not) 
+      (cond
+        ((null left) '1)
+        ((equal left '1) nil)
+        ; if expression cant be evaluated, return the expression
+        (T 
+          (list 'not left)
+        )
+      )
+    )
 
-		; (T 
-		; 	(list operator left right)
-		; )
-	)
+    ; (T 
+    ;   (list operator left right)
+    ; )
+  )
 )
