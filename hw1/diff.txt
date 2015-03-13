@@ -1,0 +1,69 @@
+*** test1.txt	2015-02-18 21:24:55.321587315 -0500
+--- test2.txt	2015-02-18 21:24:59.353587343 -0500
+***************
+*** 1,4 ****
+  else if (isalpha(letter)) { 
+!   printf('Start of an identifier with: %c\n', letter);
+    boolWord = 1; 
+  }
+--- 1,4 ----
+  else if (isalpha(letter)) { 
+!   printf('Start of an identifier "with": %c\n', letter);
+    boolWord = 1; 
+  }
+
+
+==========================================================
+
+
+*** test1.txt	2015-02-18 21:24:55.321587315 -0500
+--- test3.txt	2015-02-18 21:25:03.053587368 -0500
+***************
+*** 1,4 ****
+  else if (isalpha(letter)) { 
+!   printf('Start of an identifier with: %c\n', letter);
+    boolWord = 1; 
+  }
+--- 1,4 ----
+  else if (isalpha(letter)) { 
+!   printf('Start of an identifier with": %c\n', letter);
+    boolWord = 1; 
+  }
+
+
+==========================================================
+
+
+*** test1.txt	2015-02-18 21:24:55.321587315 -0500
+--- test4.txt	2015-02-18 21:25:06.185587390 -0500
+***************
+*** 1,4 ****
+! else if (isalpha(letter)) { 
+!   printf('Start of an identifier with: %c\n', letter);
+    boolWord = 1; 
+  }
+--- 1,4 ----
+! else if ((isalpha(letter)) { 
+!   printf('Start of an identifier "with": %c\n', letter);
+    boolWord = 1; 
+  }
+
+
+==========================================================
+
+
+*** test1.txt	2015-02-18 21:24:55.321587315 -0500
+--- test5.txt	2015-02-18 21:16:31.003474827 -0500
+***************
+*** 1,4 ****
+! else if (isalpha(letter)) { 
+!   printf('Start of an identifier with: %c\n', letter);
+!   boolWord = 1; 
+! }
+--- 1,5 ----
+! else if (isalpha(letter)) { 
+!   printf('Start of an identifier "with": %c\n', letter);
+!   boolWord = 1; 
+!   }
+! }
+

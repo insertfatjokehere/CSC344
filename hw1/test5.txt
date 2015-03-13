@@ -1,0 +1,5 @@
+else if (isalpha(letter)) { 
+  printf('Start of an identifier "with": %c\n', letter);
+  boolWord = 1; 
+  }
+}
