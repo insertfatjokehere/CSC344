@@ -5,7 +5,7 @@ Write a set of lisp functions that performs symbolic simplification and evaluati
 Expressions are created as unevaluated lists. For example:
 
 ```lisp
- (setq p1 '(and x (or x (and y (not z)))))`
+ (setq p1 '(and x (or x (and y (not z)))))
  (setq p2 '(and (and z nil) (or x 1)))
  (setq p3 '(or 1 a))
  ```
