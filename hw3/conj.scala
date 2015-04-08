@@ -6,18 +6,19 @@ import scala.collection.JavaConversions._
 
 object Conjuctive {
 
-	/** this is where the bindings would go **/
+	/* this is where the bindings would go */
 	var symbolSet = Set[Symbol]()
 	var userSetBindings = Set[(Symbol, Symbol)]()
 
 	def main(args: Array[String]) {
 		
 		implicit def convertToValue(sym: Symbol) = Value(sym)
-    	val quit = "quit"
-    	// note there is no '<' '>' in the declaration
+    val quit = "quit"
+    
+    /* note there is no '<' '>' in the declaration */
 		var eq = new ArrayList[Formula]()
 
-	/** =================== REPL =================== **/
+	 /* =================== REPL =================== */
 		while (true) {
 			var input = readLine("\n>>> ")
 
@@ -32,11 +33,11 @@ object Conjuctive {
 
 			} else if(input == "add") {
 
-				// input = readLine("Insert new equation >>> ")
-				// var inputEq = readf1("{0}")
+				/* input = readLine("Insert new equation >>> ") */
+				/* var inputEq = readf1("{0}") */
 
-				/** make a proper add function **/
-				/** These are seperate values since they would have a type mismatch **/
+				/* make a proper add function */
+				/* These are seperate values since they would have a type mismatch */
 				var w = Negation('p)
 				eq.add(w)
 				var x = Negation(Negation(Value('a)))
@@ -51,16 +52,14 @@ object Conjuctive {
 				eq.add(b)
 				var c = Disjunction('a, Conjunction('b, 'c))
 				eq.add(c)
-      			var d = Conjunction('a, Disjunction('b, 'c))
-      			eq.add(d)
-      			var e = Negation(Disjunction('a, Conjunction('b, 'c)))
-      			eq.add(e)
-      			var f = Conjunction('a, Disjunction('b, Conjunction('d, 'e)))
-      			eq.add(f)
-      			var g = Conjunction(Conjunction(Disjunction('a, 'b), Negation(Disjunction('a, 'c))), 'd)
-      			eq.add(g)
-				// inputEq.toString()
-				// eq.add(input)
+      	var d = Conjunction('a, Disjunction('b, 'c))
+      	eq.add(d)
+      	var e = Negation(Disjunction('a, Conjunction('b, 'c)))
+      	eq.add(e)
+      	var f = Conjunction('a, Disjunction('b, Conjunction('d, 'e)))
+      	eq.add(f)
+      	var g = Conjunction(Conjunction(Disjunction('a, 'b), Negation(Disjunction('a, 'c))), 'd)
+      	eq.add(g)
 
 			} else if(input == "list") {
 
@@ -98,8 +97,8 @@ object Conjuctive {
 			}
 			
 		}
-	/** =================== REPL =================== **/
-  	}
+	 /** =================== REPL =================== **/
+  }
 
   	def man() {
   		println(Console.BOLD+ "\nManual" + Console.RESET)
@@ -122,15 +121,15 @@ object Conjuctive {
   		symbolSet.clear()
   		println(Console.BOLD + "\nSelected Expression: " + Console.RESET + exp.toString())
   		
-  		// negative normal form (recursivley)
+  		/* negative normal form (recursivley) */
   		var nnf = toNNF(exp) 
   		println(Console.GREEN + Console.BOLD + "Negative Normal Form: " + Console.RESET + Console.GREEN + nnf.toString() + Console.RESET)
 
-  		// convert to CNF form (de morgans)
+  		/* convert to CNF form (de morgans) */
   		var cnf = toCNF(nnf)
   		println(Console.BOLD + Console.BLUE + "Conjunction Normal Form: " + Console.RESET + Console.BLUE + cnf.toString() + Console.RESET)
   		
-  		// get bindings
+  		/* get bindings */
   		getBindings(cnf)
   		var listBindings = symbolSet
   		var userBindings = new ArrayList[Symbol]()
@@ -142,9 +141,11 @@ object Conjuctive {
   			var input: Symbol = null;
   			var inputTemp = Symbol(readLine(set + " => "))
   			
-  			// Debug
-  			// println(inputTemp.toString())
-  			// println(inputTemp.name)
+  			/* Debug */
+        /*
+  			 println(inputTemp.toString())
+  			 println(inputTemp.name)
+        */
 
   			if(inputTemp.name == ""){
   				input = set
@@ -155,31 +156,28 @@ object Conjuctive {
   			userBindings.add(input)
   		}
 
-  		// set bindings
+  		/* set bindings */
   		userSetBindings = listBindings.zip(userBindings)
   		var binded = setBindings(cnf)
   		println(Console.BOLD + Console.CYAN + "\nBinded Equation: " + Console.RESET + Console.CYAN + binded + Console.RESET)
   		
-  		// solve for equation
+  		/* solve for equation */
   		var simplestForm = simplify(binded)
   		var doubleCheck = simplify(simplestForm)
   		println(Console.BOLD+ "Results: " + Console.RESET + doubleCheck)
   	}
 
   	def toNNF(exp: Formula): Formula = exp match {
-		// base cases
-		// case Value(p) => Value(p)
-		// case Negation(Value(p)) => Negation(Value(p))
 
-		// these 2 cases are recursive
-		case Conjunction(p, q) => Conjunction(toNNF(p), toNNF(q))
-		case Disjunction(p, q) => Disjunction(toNNF(p), toNNF(q))  
-		// where the magic happens
-		// these cases are the NNF conversions to CNF
-		case Negation(Negation(p)) => p
-		case Negation(Disjunction(p, q)) => Conjunction(toNNF(Negation(p)), toNNF(Negation(q)))
-		case Negation(Conjunction(p, q)) => Disjunction(toNNF(Negation(p)), toNNF(Negation(q)))
-		case _ => exp
+		  /* these 2 cases are recursive */
+		  case Conjunction(p, q) => Conjunction(toNNF(p), toNNF(q))
+		  case Disjunction(p, q) => Disjunction(toNNF(p), toNNF(q))  
+		  /* where the magic happens */
+		  /* these cases are the NNF conversions to CNF */
+		  case Negation(Negation(p)) => p
+		  case Negation(Disjunction(p, q)) => Conjunction(toNNF(Negation(p)), toNNF(Negation(q)))
+		  case Negation(Conjunction(p, q)) => Disjunction(toNNF(Negation(p)), toNNF(Negation(q)))
+		  case _ => exp
   	}
 
   	def toCNF(exp: Formula): Formula = exp match {
@@ -204,7 +202,7 @@ object Conjuctive {
   	}
 
   	def simplify(exp: Formula): Formula = exp match {
-  		// Negations should only be on literal
+  		/** Negations should only be on literal **/
   		case Negation(Value('true)) => Value('false)
   		case Negation(Value('false)) => Value('true)
 
