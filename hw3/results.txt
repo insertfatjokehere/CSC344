@@ -1,0 +1,102 @@
+[kgb] ~/Documents/csc344/hw3 >>> scala conj.scala 
+
+>>> add
+
+>>> eval
+
+# : Value
+0 : ¬'p
+1 : ¬¬'a
+2 : ¬('p ⋀ 'q)
+3 : ('v ⋀ 'p)
+4 : (¬('p ⋀ 'q) ⋀ ¬('o ⋀ 'w))
+5 : (¬¬'p V (¬('p ⋀ 'q) ⋀ ¬('o ⋀ 'w)))
+6 : ('a V ('b ⋀ 'c))
+7 : ('a ⋀ ('b V 'c))
+8 : ¬('a V ('b ⋀ 'c))
+9 : ('a ⋀ ('b V ('d ⋀ 'e)))
+10 : ((('a V 'b) ⋀ ¬('a V 'c)) ⋀ 'd)
+
+Select a number >>> 6
+
+Selected Expression: ('a V ('b ⋀ 'c))
+Negative Normal Form: ('a V ('b ⋀ 'c))
+Conjunction Normal Form: (('a V 'b) ⋀ ('a V 'c))
+
+Binding List:
+Use true and false to set boolean values
+
+Value => Binding
+'a => 
+'c => 
+'b => false
+
+Binded Equation: (('a V 'false) ⋀ ('a V 'c))
+Results: ('a ⋀ ('a V 'c))
+
+>>> eval
+
+# : Value
+0 : ¬'p
+1 : ¬¬'a
+2 : ¬('p ⋀ 'q)
+3 : ('v ⋀ 'p)
+4 : (¬('p ⋀ 'q) ⋀ ¬('o ⋀ 'w))
+5 : (¬¬'p V (¬('p ⋀ 'q) ⋀ ¬('o ⋀ 'w)))
+6 : ('a V ('b ⋀ 'c))
+7 : ('a ⋀ ('b V 'c))
+8 : ¬('a V ('b ⋀ 'c))
+9 : ('a ⋀ ('b V ('d ⋀ 'e)))
+10 : ((('a V 'b) ⋀ ¬('a V 'c)) ⋀ 'd)
+
+Select a number >>> 6
+
+Selected Expression: ('a V ('b ⋀ 'c))
+Negative Normal Form: ('a V ('b ⋀ 'c))
+Conjunction Normal Form: (('a V 'b) ⋀ ('a V 'c))
+
+Binding List:
+Use true and false to set boolean values
+
+Value => Binding
+'a => true
+'c => 
+'b => false
+
+Binded Equation: (('true V 'false) ⋀ ('true V 'c))
+Results: 'true
+
+>>> eval
+
+# : Value
+0 : ¬'p
+1 : ¬¬'a
+2 : ¬('p ⋀ 'q)
+3 : ('v ⋀ 'p)
+4 : (¬('p ⋀ 'q) ⋀ ¬('o ⋀ 'w))
+5 : (¬¬'p V (¬('p ⋀ 'q) ⋀ ¬('o ⋀ 'w)))
+6 : ('a V ('b ⋀ 'c))
+7 : ('a ⋀ ('b V 'c))
+8 : ¬('a V ('b ⋀ 'c))
+9 : ('a ⋀ ('b V ('d ⋀ 'e)))
+10 : ((('a V 'b) ⋀ ¬('a V 'c)) ⋀ 'd)
+
+Select a number >>> 8
+
+Selected Expression: ¬('a V ('b ⋀ 'c))
+Negative Normal Form: (¬'a ⋀ (¬'b V ¬'c))
+Conjunction Normal Form: (¬'a ⋀ (¬'b V ¬'c))
+
+Binding List:
+Use true and false to set boolean values
+
+Value => Binding
+'a => true
+'c => 
+'b => 
+
+Binded Equation: (¬'true ⋀ (¬'b V ¬'c))
+Results: 'false
+
+>>> quit
+Quiting...
