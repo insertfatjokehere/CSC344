@@ -174,7 +174,7 @@ object Conjuctive {
    case Disjunction(p, q) => Disjunction(toNNF(p), toNNF(q))  
    /* where the magic happens */
    /* these cases are the NNF conversions to CNF */
-   case Negation(Negation(p)) => p
+   case Negation(Negation(p)) => toNNF(p)
    case Negation(Disjunction(p, q)) => Conjunction(toNNF(Negation(p)), toNNF(Negation(q)))
    case Negation(Conjunction(p, q)) => Disjunction(toNNF(Negation(p)), toNNF(Negation(q)))
    case _ => exp
