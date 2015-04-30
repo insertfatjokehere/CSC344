@@ -16,16 +16,16 @@
 
   3. Demonstrate that you can check argument types and infer the types of vals and vars whose types are inferable using Scala rules.
 
-For example, given an encoding that aString is a String, and String has method length : Int, you should match a predicate 
+For example, given an encoding that aString is a String, and String has method `length : Int`, you should match a predicate 
 
 ```prolog
 infer(n, X) 
 ```
 
-with X=Int for:
+with `X=Int` for:
  
  ```scala
  val n = aString.length()
  ```
 
-And, supposing there is a method f(b: Boolean), you should report that `f(n)` does not type check.
+And, supposing there is a method `f(b: Boolean)`, you should report that `f(n)` does not type check.
