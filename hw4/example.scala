@@ -4,9 +4,9 @@ object demo {
 		var num: Int
 		var sent: String
 		var bool: Boolean
-
-		/* Examples */		bool = c.contains(someDataStructure) // true
-
+		
+		/* Examples */	
+		bool = c.contains(someDataStructure) // true
 		num = a.asInstanceOf(someDataStructure) // false
 		num = a.hashCode() // true
 		sent = b.displayStack() // false (no args)
