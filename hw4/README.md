@@ -1,4 +1,4 @@
-# CSC344 Assignment 4 (Prolog)
+# Assignment 4 (Prolog)
 
   1. Write a tiny Scala program (of any kind) that includes at least one arithmetic expression, one subclass, and one function-type. You need not include uses of generic types. 
      For simplicity, give a name to every term and declaration.
