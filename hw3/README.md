@@ -1,4 +1,3 @@
-
 # Assignment 3 (Scala)
 
 Write a Scala program that simplifies boolean expressions as in assignment 2, except:

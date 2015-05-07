@@ -1,0 +1,62 @@
+=== HW5 Manager ===
+
+--- Working Directory ---
+/home/kgb/Documents/csc344
+
+--- Sub Directories ---
+
+- folder: hw1
+ |- file: README.md
+ |- file: example.c
+ |- file: Code_Parser.c
+
+- folder: hw2
+ |- file: expression_equator.lisp
+ |- file: README.md
+ |- file: results.txt
+
+- folder: hw3
+ |- file: conj.scala
+ |- file: README.md
+ |- file: results.txt
+
+- folder: hw4
+ |- file: example.scala
+ |- file: README.md
+ |- file: typeCheck.pl
+
+- folder: hw5
+ |- file: example.txt
+ |- file: README.md
+ |- file: main.py
+
+--- Created index.html ---
+
+--- Zipping File: CSC344.zip ---
+
+compressing index.html
+compressing hw4/example.scala
+compressing hw4/README.md
+compressing hw4/typeCheck.pl
+compressing hw3/conj.scala
+compressing hw3/README.md
+compressing hw3/results.txt
+compressing hw2/expression_equator.lisp
+compressing hw2/README.md
+compressing hw2/results.txt
+compressing hw1/README.md
+compressing hw1/example.c
+compressing hw1/Code_Parser.c
+compressing hw5/example.txt
+compressing hw5/README.md
+compressing hw5/main.py
+
+--- Send Email ---
+
+Enter GMAIL username >>> kbashfor@oswego.edu
+Enter Password >>> 
+Enter the email address >>> NullPointerException@gmail.com
+
+Email successful
+
+=== Exiting ===

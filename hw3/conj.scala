@@ -181,7 +181,7 @@ object Conjuctive {
   }
 
   def toCNF(exp: Formula): Formula = exp match {
-   /** De Morgans Law**/
+   /* De Morgans Law */
    case Disjunction(p, Conjunction(a, b)) => Conjunction(toCNF(Disjunction(p, a)), toCNF(Disjunction(p, b)))
    case Disjunction(Conjunction(a, b), p) => Conjunction(toCNF(Disjunction(p, a)), toCNF(Disjunction(p, b)))
    case _ => exp

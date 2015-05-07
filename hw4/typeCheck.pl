@@ -14,7 +14,6 @@
  * 
  * And, supposing there is a method f(b: Boolean), you should report that "f(n)" does not type check.
 */
-
 /* Types */
 type(int).
 type(string).
